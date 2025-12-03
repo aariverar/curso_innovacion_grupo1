@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grupo 1 - Interfaz Interactiva</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="mobile-container">
+        <div class="main-card">
+            <div class="header">
+                <h1 class="title">GRUPO 1</h1>
+                <p class="subtitle">¿Cómo puedo utilizar?</p>
+            </div>
+            
+            <div class="buttons-container">
+                <button class="action-btn whatsapp-btn" data-action="whatsapp">
+                    <i class="fab fa-whatsapp"></i>
+                    <span>WHATSAPP</span>
+                    <div class="btn-glow"></div>
+                </button>
+                
+                <button class="action-btn manual-btn" data-action="manual">
+                    <i class="fas fa-book"></i>
+                    <span>MANUAL DE USO</span>
+                    <div class="btn-glow"></div>
+                </button>
+                
+                <button class="action-btn video-btn" data-action="video">
+                    <i class="fas fa-play-circle"></i>
+                    <span>VIDEO INTERACTIVO</span>
+                    <div class="btn-glow"></div>
+                </button>
+            </div>
+            
+            <!-- Indicador de progreso -->
+            <div class="progress-indicator">
+                <div class="progress-dot active"></div>
+                <div class="progress-dot"></div>
+                <div class="progress-dot"></div>
+            </div>
+        </div>
+        
+        <!-- Modal para acciones -->
+        <div class="modal-overlay" id="modalOverlay">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 id="modalTitle">Título</h3>
+                    <button class="close-btn" id="closeModal">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="modal-body" id="modalBody">
+                    <!-- Contenido dinámico -->
+                </div>
+            </div>
+        </div>
+        
+        <!-- Partículas decorativas -->
+        <div class="particles">
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
