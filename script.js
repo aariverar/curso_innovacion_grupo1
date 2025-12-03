@@ -30,36 +30,8 @@ const modalContent = {
                 </a>
             </div>
             
-            <p><strong>Número:</strong> +1 (234) 567-890</p>
+            <p><strong>Número:</strong> (+51) 958025002</p>
             <p><em>¡Estamos aquí para ayudarte!</em></p>
-        `
-    },
-    manual: {
-        title: 'Manual de Uso',
-        content: `
-            <h4>📚 Guía Completa de Uso</h4>
-            <p>Accede a nuestra documentación completa y aprende a utilizar todas las funcionalidades del sistema.</p>
-            
-            <h4>📋 Contenido del Manual:</h4>
-            <ul>
-                <li>🚀 <strong>Introducción:</strong> Conceptos básicos y configuración inicial</li>
-                <li>⚙️ <strong>Configuración:</strong> Personalización del sistema</li>
-                <li>🎯 <strong>Funciones Principales:</strong> Guías paso a paso</li>
-                <li>🔧 <strong>Resolución de Problemas:</strong> FAQ y soluciones</li>
-                <li>💡 <strong>Tips y Trucos:</strong> Optimización y mejores prácticas</li>
-                <li>🔄 <strong>Actualizaciones:</strong> Nuevas características</li>
-            </ul>
-            
-            <h4>📱 Formatos Disponibles:</h4>
-            <p>• PDF interactivo<br>
-               • Guía web responsive<br>
-               • Videos explicativos<br>
-               • Infografías descargables</p>
-            
-            <div style="margin-top: 20px; padding: 15px; background: rgba(0, 123, 255, 0.1); border-radius: 8px;">
-                <p><strong>💾 Descarga el manual completo:</strong></p>
-                <p>Disponible en español e inglés. Última actualización: Diciembre 2024</p>
-            </div>
         `
     },
     video: {

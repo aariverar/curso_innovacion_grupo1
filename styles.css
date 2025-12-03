@@ -208,18 +208,9 @@ body {
     box-shadow: 0 15px 35px rgba(37, 211, 102, 0.4);
 }
 
-.manual-btn {
-    background: linear-gradient(135deg, var(--accent-blue), #0056b3);
-    animation: buttonEntrance 0.6s ease-out 0.4s both;
-}
-
-.manual-btn:hover {
-    box-shadow: 0 15px 35px rgba(0, 123, 255, 0.4);
-}
-
 .video-btn {
     background: linear-gradient(135deg, var(--accent-red), #c44569);
-    animation: buttonEntrance 0.6s ease-out 0.6s both;
+    animation: buttonEntrance 0.6s ease-out 0.4s both;
 }
 
 .video-btn:hover {
