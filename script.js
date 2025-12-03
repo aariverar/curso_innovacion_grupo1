@@ -24,7 +24,7 @@ const modalContent = {
                     <li>✅ Disponible 24/7</li>
                 </ul>
                 
-                <a href="https://wa.me/1234567890?text=Hola,%20necesito%20ayuda%20con%20el%20Grupo%201" 
+                <a href="https://wa.me/51958025002?text=Hola,%20necesito%20ayuda%20con%20el%20Grupo%201" 
                    class="whatsapp-link" target="_blank">
                     <i class="fab fa-whatsapp"></i> Abrir WhatsApp
                 </a>
