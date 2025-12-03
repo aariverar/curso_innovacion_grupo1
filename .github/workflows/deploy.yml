@@ -1,52 +1,43 @@
-name: Deploy to GitHub Pages
+# Workflow simple para sitios HTML estáticos
+name: Deploy static content to Pages
 
 on:
+  # Se ejecuta en push a la rama main
   push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
+    branches: ["main"]
+
+  # Permite ejecutar este workflow manualmente desde la pestaña Actions
   workflow_dispatch:
 
+# Establece permisos del GITHUB_TOKEN para permitir deployment a GitHub Pages
 permissions:
   contents: read
   pages: write
   id-token: write
 
+# Permite solo un deployment concurrente, omitiendo ejecuciones en cola entre la ejecución en progreso y la última en cola.
+# Sin embargo, NO cancela ejecuciones en progreso ya que queremos permitir que estos deployments de producción se completen.
 concurrency:
   group: "pages"
   cancel-in-progress: false
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    
-    steps:
-    - name: Checkout
-      uses: actions/checkout@v4
-      
-    - name: Setup Pages
-      uses: actions/configure-pages@v4
-      
-    - name: Build
-      run: |
-        echo "Building static site..."
-        # Como es un sitio estático HTML/CSS/JS, no necesitamos build process
-        ls -la
-        
-    - name: Upload artifact
-      uses: actions/upload-pages-artifact@v3
-      with:
-        path: '.'
-
+  # Job de deployment único ya que solo estamos deployeando
   deploy:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
-    needs: build
-    if: github.ref == 'refs/heads/main'
-    
     steps:
-    - name: Deploy to GitHub Pages
-      id: deployment
-      uses: actions/deploy-pages@v4
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          # Subir todo el repositorio
+          path: '.'
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

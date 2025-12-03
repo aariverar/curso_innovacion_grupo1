@@ -1,0 +1,34 @@
+# Configuración para GitHub Pages
+title: "Interfaz Móvil Interactiva - Grupo 1"
+description: "Una interfaz móvil moderna e interactiva para el curso de innovación"
+url: "https://aariverar.github.io"
+baseurl: "/curso_innovacion_grupo1"
+
+# Jekyll settings
+markdown: kramdown
+highlighter: rouge
+theme: minima
+
+# Plugins
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+
+# Exclude from processing
+exclude:
+  - README.md
+  - DEPLOYMENT.md
+  - .gitignore
+  - .git/
+  - .github/
+
+# Include files
+include:
+  - _pages
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: "default"

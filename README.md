@@ -2,6 +2,11 @@
 
 🚀 **Demo en vivo**: [Ver sitio](https://aariverar.github.io/curso_innovacion_grupo1/)
 
+> **⚠️ Nota**: Para que el sitio funcione, debes habilitar GitHub Pages en la configuración del repositorio:
+> 1. Ve a **Settings** → **Pages**
+> 2. En **Source**, selecciona **GitHub Actions**
+> 3. El sitio se deployará automáticamente
+
 ## 🎨 Descripción
 Una interfaz móvil moderna e interactiva diseñada con HTML5, CSS3 y JavaScript vanilla. Replica el diseño elegante mostrado en la imagen de referencia con animaciones fluidas y efectos modernos.
 
