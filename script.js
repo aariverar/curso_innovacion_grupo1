@@ -37,38 +37,30 @@ const modalContent = {
     video: {
         title: 'Video Interactivo',
         content: `
-            <h4>🎥 Experiencia de Aprendizaje Inmersiva</h4>
-            <p>Sumérgete en nuestros videos interactivos diseñados para un aprendizaje dinámico y efectivo.</p>
-            
-            <h4>🌟 Características del Video Interactivo:</h4>
-            <ul>
-                <li>🎮 <strong>Navegación Interactiva:</strong> Explora contenido a tu ritmo</li>
-                <li>📊 <strong>Quizzes Integrados:</strong> Evalúa tu conocimiento</li>
-                <li>🔗 <strong>Enlaces Dinámicos:</strong> Acceso directo a recursos</li>
-                <li>📝 <strong>Notas Personales:</strong> Guarda información importante</li>
-                <li>🎯 <strong>Marcadores:</strong> Regresa a secciones específicas</li>
-                <li>📱 <strong>Multi-dispositivo:</strong> Continúa donde lo dejaste</li>
-            </ul>
-            
-            <h4>📚 Módulos Disponibles:</h4>
-            <div style="display: grid; gap: 10px; margin: 15px 0;">
-                <div style="padding: 10px; background: rgba(255, 71, 87, 0.1); border-radius: 6px;">
-                    <strong>Módulo 1:</strong> Fundamentos (15 min)
-                </div>
-                <div style="padding: 10px; background: rgba(255, 71, 87, 0.1); border-radius: 6px;">
-                    <strong>Módulo 2:</strong> Configuración Avanzada (20 min)
-                </div>
-                <div style="padding: 10px; background: rgba(255, 71, 87, 0.1); border-radius: 6px;">
-                    <strong>Módulo 3:</strong> Casos de Uso (25 min)
+            <div class="video-container-mobile">
+                <video 
+                    id="interactiveVideo" 
+                    controls 
+                    playsinline 
+                    webkit-playsinline
+                    preload="metadata"
+                    poster=""
+                    class="mobile-optimized-video"
+                >
+                    <source src="Vdo1.mp4" type="video/mp4">
+                    Tu navegador no soporta el elemento de video.
+                </video>
+                
+                <div class="video-controls-overlay">
+                    <button class="fullscreen-btn" onclick="enterMobileFullscreen()">
+                        <i class="fas fa-expand"></i> Pantalla Completa
+                    </button>
                 </div>
             </div>
             
-            <p><strong>🏆 Certificación disponible</strong> al completar todos los módulos.</p>
-            
-            <div style="text-align: center; margin-top: 20px;">
-                <button style="background: #ff4757; color: white; border: none; padding: 12px 25px; border-radius: 8px; cursor: pointer; font-weight: 600;">
-                    <i class="fas fa-play"></i> Comenzar Video Interactivo
-                </button>
+            <div class="video-info">
+                <h4>🎥 Video Interactivo - Grupo 1</h4>
+                <p>Video completo optimizado para dispositivos móviles. Usa el botón de pantalla completa para una mejor experiencia.</p>
             </div>
         `
     }
@@ -183,6 +175,52 @@ document.addEventListener('keydown', (e) => {
         closeModalFunction();
     }
 });
+
+// Función para pantalla completa optimizada para móvil
+function enterMobileFullscreen() {
+    const video = document.getElementById('interactiveVideo');
+    if (video) {
+        // Crear overlay de pantalla completa
+        const fullscreenOverlay = document.createElement('div');
+        fullscreenOverlay.className = 'video-fullscreen-overlay';
+        fullscreenOverlay.innerHTML = `
+            <div class="fullscreen-video-container">
+                <video 
+                    controls 
+                    autoplay 
+                    playsinline 
+                    webkit-playsinline
+                    class="fullscreen-mobile-video"
+                    src="${video.querySelector('source').src}"
+                >
+                </video>
+                <button class="close-fullscreen-btn" onclick="exitMobileFullscreen()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+        `;
+        
+        document.body.appendChild(fullscreenOverlay);
+        document.body.style.overflow = 'hidden';
+        
+        // Animar entrada
+        setTimeout(() => {
+            fullscreenOverlay.classList.add('active');
+        }, 50);
+    }
+}
+
+// Función para salir de pantalla completa
+function exitMobileFullscreen() {
+    const overlay = document.querySelector('.video-fullscreen-overlay');
+    if (overlay) {
+        overlay.classList.remove('active');
+        setTimeout(() => {
+            document.body.removeChild(overlay);
+            document.body.style.overflow = '';
+        }, 300);
+    }
+}
 
 // Animaciones CSS adicionales
 const style = document.createElement('style');
