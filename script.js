@@ -46,6 +46,7 @@ const modalContent = {
                     preload="metadata"
                     poster=""
                     class="mobile-optimized-video"
+                    controlsList="nodownload"
                 >
                     <source src="Vdo1.mp4" type="video/mp4">
                     Tu navegador no soporta el elemento de video.
@@ -176,49 +177,37 @@ document.addEventListener('keydown', (e) => {
     }
 });
 
-// Función para pantalla completa optimizada para móvil
+// Función para pantalla completa optimizada para móvil (sin duplicación)
 function enterMobileFullscreen() {
     const video = document.getElementById('interactiveVideo');
     if (video) {
-        // Crear overlay de pantalla completa
-        const fullscreenOverlay = document.createElement('div');
-        fullscreenOverlay.className = 'video-fullscreen-overlay';
-        fullscreenOverlay.innerHTML = `
-            <div class="fullscreen-video-container">
-                <video 
-                    controls 
-                    autoplay 
-                    playsinline 
-                    webkit-playsinline
-                    class="fullscreen-mobile-video"
-                    src="${video.querySelector('source').src}"
-                >
-                </video>
-                <button class="close-fullscreen-btn" onclick="exitMobileFullscreen()">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-        `;
+        // Usar la API nativa de pantalla completa del video
+        if (video.requestFullscreen) {
+            video.requestFullscreen();
+        } else if (video.webkitRequestFullscreen) {
+            video.webkitRequestFullscreen();
+        } else if (video.msRequestFullscreen) {
+            video.msRequestFullscreen();
+        } else if (video.webkitEnterFullScreen) {
+            video.webkitEnterFullScreen(); // iOS Safari
+        }
         
-        document.body.appendChild(fullscreenOverlay);
-        document.body.style.overflow = 'hidden';
+        // Agregar clase para estilos de pantalla completa
+        video.classList.add('fullscreen-active');
         
-        // Animar entrada
-        setTimeout(() => {
-            fullscreenOverlay.classList.add('active');
-        }, 50);
-    }
-}
-
-// Función para salir de pantalla completa
-function exitMobileFullscreen() {
-    const overlay = document.querySelector('.video-fullscreen-overlay');
-    if (overlay) {
-        overlay.classList.remove('active');
-        setTimeout(() => {
-            document.body.removeChild(overlay);
-            document.body.style.overflow = '';
-        }, 300);
+        // Escuchar cuando salga de pantalla completa
+        const exitFullscreenHandler = () => {
+            video.classList.remove('fullscreen-active');
+            document.removeEventListener('fullscreenchange', exitFullscreenHandler);
+            document.removeEventListener('webkitfullscreenchange', exitFullscreenHandler);
+            document.removeEventListener('mozfullscreenchange', exitFullscreenHandler);
+            document.removeEventListener('MSFullscreenChange', exitFullscreenHandler);
+        };
+        
+        document.addEventListener('fullscreenchange', exitFullscreenHandler);
+        document.addEventListener('webkitfullscreenchange', exitFullscreenHandler);
+        document.addEventListener('mozfullscreenchange', exitFullscreenHandler);
+        document.addEventListener('MSFullscreenChange', exitFullscreenHandler);
     }
 }
 
